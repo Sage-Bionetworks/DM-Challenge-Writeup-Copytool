@@ -254,6 +254,7 @@ def archive(evaluation, stat="VALIDATED", reArchive=False):
             entity = syn.store(projectEntity)
             adminPriv = ['DELETE','CREATE','READ','CHANGE_PERMISSIONS','UPDATE','MODERATE','CHANGE_SETTINGS']
             syn.setPermissions(entity,"3324230",adminPriv)
+            syn.setPermissions(entity,"3329874",adminPriv)
             copied = synu.copy(syn, submission.entityId, entity.id)
             archived = {"archived":entity.id}
             status = update_single_submission_status(status, archived)

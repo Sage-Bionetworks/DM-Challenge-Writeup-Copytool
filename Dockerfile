@@ -16,4 +16,5 @@ COPY challenge.py /challenge.py
 COPY challenge_config.py /challenge_config.py
 COPY lock.py /lock.py
 COPY messages.py /messages.py
-COPY challenge_eval.sh /challenge_eval.sh
+COPY runTool.sh /runTool.sh
+COPY runWriteUpCopyTool.py /runWriteUpCopyTool.py
