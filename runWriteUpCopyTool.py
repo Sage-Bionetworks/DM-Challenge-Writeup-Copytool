@@ -25,7 +25,7 @@ if __name__ == '__main__':
         subprocess.call(validateSub, stderr=subprocess.STDOUT)
         subprocess.call(archiveSub, stderr=subprocess.STDOUT)
 
-        time.sleep(43200)
+        time.sleep(7200)
         if killer.kill_now:
             break
     print("End of the program. I was killed gracefully :)")
