@@ -11,13 +11,14 @@ def validate_submission(syn, evaluation, submission, public=False, admin=None):
     :returns: (True, message) if validated, (False, message) if
               validation fails or throws exception
     """
+    print 'in validate_submission: public='+str(public)+", admin="+str(admin)
     try:
         if public:
             ent = syn.getPermissions(submission['entityId'])
             assert "READ" in ent and "DOWNLOAD" in ent, "Please share your private directory (%s) with the `Public` with `Can Download` permissions." % submission['entityId']
         if admin is not None:
             ent = syn.getPermissions(submission['entityId'], admin)
-            assert "READ" in ent and "DOWNLOAD" in ent, "Please share your private directory (%s) with the `Public` with `Can Download` permissions." % submission['entityId']            
+            assert "READ" in ent and "DOWNLOAD" in ent, "Please share your private directory (%s) with the Synapse user `%s` with `Can Download` permissions." % (submission['entityId'], admin)           
     except SynapseHTTPError as e:
         if e.response.status_code == 403:
             raise AssertionError("Please share your private directory (%s) with the Synapse user `%s` with `Can Download` permissions." % (submission['entityId'], admin))
